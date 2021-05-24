@@ -119,7 +119,7 @@ p = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
 cache_max = {0:p[0], 1:p[1]}
 def findMaxValuedDivide_DP(n:int, prices=[0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]):
     '''
-    切割长度为n的钢管，查找使得价格最高的切割方式，动态规划版本
+    切割长度为n的钢管，查找使得价格最高的切割方式，动态规划版本，自顶向下
 
     :param n: 钢管长度
     :param prices: 价格表，下标为i的数值即为长度为i的钢管的价格
@@ -150,7 +150,7 @@ def findMaxValuedDivide_DP(n:int, prices=[0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
 
 def findMaxValuedDivide_DP2(n:int, prices=[0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]):
     '''
-    切割长度为n的钢管，查找使得价格最高的切割方式，动态规划版本，非递归版本
+    切割长度为n的钢管，查找使得价格最高的切割方式，动态规划版本，非递归版本，自底向上
 
     :param n: 钢管长度
     :param prices: 价格表，下标为i的数值即为长度为i的钢管的价格
@@ -165,10 +165,7 @@ def findMaxValuedDivide_DP2(n:int, prices=[0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30
         if j < len(prices) and prices[j] is not None:
             max_value = prices[j]
         for i in range(1, int(j / 2) + 1):
-            if j - i < len(prices) and prices[j - i] is not None:
-                subval1 = prices[j - i]
-            else:
-                subval1 = caches[j - i]
+            subval1 = caches[j - i]
             subval2 = caches[i]
             if subval1 + subval2 > max_value:
                 max_value = subval1 + subval2

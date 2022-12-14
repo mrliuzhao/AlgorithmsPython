@@ -23,3 +23,15 @@ def combine(n, k):
 
     walk(orig, [])
     return res
+
+
+if __name__ == "__main__":
+    import time
+
+    t0 = time.perf_counter()
+    ret = combine(100, 5)
+    print('time cost: %.2f' % (time.perf_counter() - t0))
+    # print(ret)
+
+
+
